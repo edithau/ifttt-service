@@ -22,10 +22,12 @@ class MyMiniTest < MiniTest::Unit::TestCase
   end
 
   def test_compose_system_command
-    tickers = 'aapl,goog,data'
+    raw_tickers = '[\"AAPL\", \"GOOG\", \"DATA\"]'
+    tickers = 'AAPL,GOOG,DATA'
+
     email = 'abc@example.com'
 
-    command_str = IftttController.compose_system_command(tickers, email)
+    command_str = IftttController.compose_system_command(raw_tickers, email)
     assert_includes command_str, tickers, "system command should include tickers #{tickers}"
     assert_includes command_str, email, "system command should include email #{email}"
   end

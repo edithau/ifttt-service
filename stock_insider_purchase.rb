@@ -135,6 +135,7 @@ class IftttController < ActionController::Base
 
   # return a unix system command string
   def self.compose_system_command (tickers, email)
+    tickers.gsub!(/[\\"| |\[|\]]/, '')
     if !tickers.match(VALID_TICKERS_REGEX)
       raise "Invalid tickers format #{tickers}"
     end
