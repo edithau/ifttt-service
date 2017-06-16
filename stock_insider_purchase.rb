@@ -145,7 +145,7 @@ class IftttController < ActionController::Base
     end
 
     subject = "Insider purchase: #{tickers}"
-    content = "Please check the link below for the latest insider purchase.'\n' #{embedded_link (tickers)}"
+    content = "Please check the link below for the latest insider purchase.\n #{embedded_link (tickers)}"
 
     "echo '#{content}' | mail -s '#{subject}' #{email}"
   end

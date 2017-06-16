@@ -2,6 +2,7 @@ require 'bundler/setup'
 require 'minitest/autorun'
 require 'minitest/unit'
 require './stock_insider_purchase.rb'
+require 'byebug'
 
 require 'uri'
 
