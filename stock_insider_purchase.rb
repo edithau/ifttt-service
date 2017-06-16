@@ -129,6 +129,7 @@ class IftttController < ActionController::Base
     system(cmd + ' 2>&1 ')
     render plain: {data: [{id: Time.now}]}.to_json, status: 200
   rescue => e
+     puts e.backtrace
      render plain: { errors: [ {status: "SKIP", message: "Cannot notify user.  Reason: #{e.message}" } ] }.to_json, status: 400
   end
 
