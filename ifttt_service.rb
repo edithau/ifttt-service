@@ -12,4 +12,4 @@ require './stock_insider_purchase.rb'
 
 
 StockInsiderPurchase.initialize!
-Rack::Server.start app: StockInsiderPurchase, Port: 3000
+Rack::Server.start app: StockInsiderPurchase, Port: 3000, Host: '0.0.0.0'

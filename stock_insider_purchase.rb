@@ -100,8 +100,10 @@ class IftttController < ActionController::Base
   def insider_purchase
     latest_tickers = self.class.latest_insider_purchase_tickers
 
-    if !latest_tickers.empty? && (latest_tickers != TickerList.all.last.tickers)
+    if !latest_tickers.empty?
+      if TickerList.all.last.tickers.nil? || (latest_tickers.uniq.sort != TickerList.all.last.tickers.uniq.sort)
         TickerList.create(latest_tickers)
+      end
     end
 
     data = TickerList.all.sort_by(&:created_at).reverse.map(&:to_json).first(params[:limit] || 50)
